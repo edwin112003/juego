@@ -1,0 +1,69 @@
+
+<link href="/css/estilo.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+  <body>
+      <div id="msg">Esperando jugadores</div>
+      <div class="d-flex justify-content-around flex-row">
+        <div class="p-3">
+                <p><i class="font-monospace"></i>Usuarios conectados:</p>
+                <div id="list"><ul id="users" class="list-group"></ul><br><br></div>      
+                <h5 id="room-name" hidden="hidden"></h5>
+                <a href="/links/inicio" class="btn btn-danger">Salir de la Sala</a>        
+        </div>
+        <div class="p-3">
+    <div class="cont">
+        <div class="time"><div style="height: 40px;"><p style="color:  #edf4fd; text-align:center;">Tiempo:&nbsp&nbsp</p></div><div style="height: 40px;"><p style= "color: #189078; text-align:center;" id="time"></p></div></div>
+        <div class="pointer">
+            <div class="c-2">
+                <p style="color:  #edf4fd;">Mis puntos:&nbsp&nbsp</p><p id="puntos"></p>
+            </div>
+            <div class="c-2">
+                <p style="color:  #edf4fd;">Puntos rivales:&nbsp&nbsp</p><p id="puntos2"></p>
+            </div>
+        </div>
+        <div class="contenedor">
+            <div id="player"><svg version="1.1" width="80px" heigth="80px" style="border-radius: 29px;" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+           <circle fill="#EFF3F3" cx="250" cy="250.001" r="209.143"/>
+           <circle fill="#18947B" cx="250" cy="250.001" r="158.571"/>
+           <circle fill="#EFF1F1" cx="250" cy="250.501" r="114"/>
+           <circle fill="#189179" cx="250.5" cy="250.001" r="69.376"/>
+           <g>
+           </g>
+           <g>
+           </g>
+           <g>
+           </g>
+           <g>
+           </g>
+           <g>
+           </g>
+           <g>
+           </g>
+           </svg></div>
+        </div>
+    </div>
+    <!--- Modal-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="background-color:  rgb(12, 53, 77)">
+            <div class="modal-header" style="border-bottom: 0px solid rgb(4, 36, 56)">
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <p style="color:  #edf4fd; font-size: 30px;">El tiempo ha terminado</p>
+                <p style="color:  #edf4fd; font-size: 30px;" id="score"></p>
+            </div>
+            <div class="modal-footer" style="border-top: 0px solid rgb(4, 36, 56)">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #189078">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js_chat/main.js" username = '{{user.usertag}} ' room = '{{newlink}}' id = '{{user.id_usuario}}'></script>
+    </body>
