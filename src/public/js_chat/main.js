@@ -138,7 +138,7 @@ function start() {
   clearInterval(espera);
 
   
-  var seconds = 5;
+  var seconds = 15;
   var partida = setInterval( function()  {
       document.getElementById("time").innerHTML = seconds--;
       if (seconds == -1) {
