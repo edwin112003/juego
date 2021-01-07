@@ -89,4 +89,8 @@ router.post("/guardar", isLoggedIn, async(req,res)=>{
     }
     res.json("Guapo");
 });
+router.get('/logout', isLoggedIn,(req,res)=>{
+    req.logOut();
+    res.redirect('/links/login');
+});
 module.exports = router;

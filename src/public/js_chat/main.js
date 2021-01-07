@@ -213,12 +213,10 @@ function outputUsers(users) {
 
  function elim(){
   const userList = document.getElementById('users');
-  /*if(!userList){
+  if(!userList){
 
   }else{
     let padre = userList.parentNode;
     padre.removeChild(userList);
-  }*/
-  userList.remove();
- }
- 
+  }
+ } 

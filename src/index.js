@@ -313,22 +313,9 @@ io.on('connection', (socket) => {
           usertag: "NO"
         });
     }
-      /*io.to(room).emit('score', {
-        usertag: username,
-        scores: getRoomUsers(user.room)
-      });
-  */
-      const user = userJoin(socket.id, username, room);
-          socket.join(user.room);
-      // Welcome current use
-      // Broadcast when a user connects
-      // Send users and room info
-      /*io.to(user.room).emit('roomUsers', {
-        room: user.room,
-        users: getRoomUsers(user.room)
-      });*/
     });
     // Runs when client disconnects
+    
     });
     socket.on('disconnect', () => {
       const user = userLeave(socket.id);
