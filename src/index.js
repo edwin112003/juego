@@ -101,7 +101,6 @@ io.on('connection', (socket) => {
         if(contador1>=2){
           contador1++;
           console.log('asda');
-          const user = userLeave(socket.id);
           io.emit('desconectar',username);
           console.log('nooooooooooooooooo');
         }
@@ -193,7 +192,6 @@ io.on('connection', (socket) => {
         console.log("seguns", s1_j2.user);
         console.log("pri_score", s1_j2.score);
       }
-      
       if (s1_j1.score > s1_j2.score ) {
         console.log('gana jugador1');
           //Gana jugador uno
@@ -299,7 +297,6 @@ io.on('connection', (socket) => {
         s5_j2.score = score;
         s5_j1.user = username;
       }
-
       if (s5_j1.score > s5_j2.score && room == 5 ) {
         //Gana jugador uno
         io.to(room).emit('score', {
@@ -316,8 +313,6 @@ io.on('connection', (socket) => {
           usertag: "NO"
         });
     }
-
-    
       /*io.to(room).emit('score', {
         usertag: username,
         scores: getRoomUsers(user.room)
@@ -325,13 +320,8 @@ io.on('connection', (socket) => {
   */
       const user = userJoin(socket.id, username, room);
           socket.join(user.room);
-   
       // Welcome current use
-      
-  
       // Broadcast when a user connects
-      
-  
       // Send users and room info
       /*io.to(user.room).emit('roomUsers', {
         room: user.room,
@@ -339,7 +329,6 @@ io.on('connection', (socket) => {
       });*/
     });
     // Runs when client disconnects
-    
     });
     socket.on('disconnect', () => {
       const user = userLeave(socket.id);
