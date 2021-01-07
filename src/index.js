@@ -56,29 +56,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-//errores
-/*if(app.get('env') === 'development') { 
-  console.log("Estamos1");
-  app.use(function(err, req, res, next) { 
-    console.log("Estamos2");
-    res.status(err.status ); 
-    console.log("Estamos3");
-    res.render('error', { 
-      message: err.message, 
-      error: err }); 
-  }); 
-  console.log("Estamos4");
-}
-console.log("Estamos5");
-app.use(function(err, req, res, next) { 
-  console.log("Estamos6");
-  res.status(err.status );
-  console.log("Estamos7"); 
-  res.render('error', { 
-    message: err.message, 
-    error: {} }); 
-}); 
-console.log("Estamos8");*/
 //socket
 
 
@@ -116,7 +93,6 @@ let s4_j2 = {score: 0, user:"", win:false};
 let s5_j1 = {score: 0, user:"", win:false};
 let s5_j2 = {score: 0, user:"", win:false};
 io.on('connection', (socket) => {
-
     console.log('entrada de nuevo socket');
     socket.on('joinRoom', ({ username, room }) => {
       console.log('se conecta a',room);
@@ -125,6 +101,7 @@ io.on('connection', (socket) => {
         if(contador1>=2){
           contador1++;
           console.log('asda');
+          const user = userLeave(socket.id);
           io.emit('desconectar',username);
           console.log('nooooooooooooooooo');
         }
@@ -186,27 +163,22 @@ io.on('connection', (socket) => {
           console.log('contador5',contador5);
         }
       }
-  
       const user = userJoin(socket.id, username, room);
-          socket.join(user.room);
-  
+      socket.join(user.room);
       // Welcome current user
-      
-  
       // Broadcast when a user connects
       socket.broadcast
-        .to(user.room)
-        .emit(
+            .to(user.room)
+          .emit(
           'message',
           formatMessage(botName, `${user.usertag} se ha unido al chat :)`)
         );
-  
       // Send users and room info
       io.to(user.room).emit('roomUsers', {
         room: user.room,
         users: getRoomUsers(user.room)
       });
-    });
+    // jcndskjvkdjfvbkjcxvjkxc  });
     socket.on('F_room', ({ username, score , room }) => {
       console.log('user:',username,"score:",score);
       if(room == 1 && s1_j1.score == 0){
@@ -366,13 +338,11 @@ io.on('connection', (socket) => {
         users: getRoomUsers(user.room)
       });*/
     });
-  
-  
     // Runs when client disconnects
+    
+    });
     socket.on('disconnect', () => {
-      
       const user = userLeave(socket.id);
-  
       if (user) {
         
         if(user.room == 1){
@@ -400,11 +370,10 @@ io.on('connection', (socket) => {
         io.to(user.room).emit('roomUsers', {
         room: user.room,
         users: getRoomUsers(user.room) 
-      });
-      }
-      
+        });
+      }      
     });
-  });
+});
 //archivos publicos
 
 //inciar servidor
