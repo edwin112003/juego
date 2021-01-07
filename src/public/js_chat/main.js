@@ -12,72 +12,8 @@ console.log('atributo:', room);
 var id= document.currentScript.getAttribute('id');
 console.log('id atri:', id);
 
-let file;
-
-const Enviar = ()=>{
-  $('#nota').summernote({
-    height: 300,                 // set editor height
-    minHeight: null,             // set minimum height of editor
-    maxHeight: null,             // set maximum height of editor
-    focus: true,                  // set focus to editable area after initializing summernote
-    toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture']],
-        ['view', ['codeview', 'help']],
-      ]
-});
-var text = $('#nota').summernote('code');
-var texto = 'buenas';
-var k = 'pepe';
-console.log('lleva');
-var array = {id:id_contacto};
-fetch("/links/llaves2", {method: 'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(array)}).then(response => response.json()).then(data =>{
-  var TC = CryptoJS.AES.encrypt(text, k).toString();
-  console.log('rpueba',TC);
-  //asimetrico
-  console.log('llaves2',data);
-
-  const keyrsa = new JSEncrypt();
- 
-  keyrsa.setPublicKey(data);
-
-  let kc =keyrsa.encrypt(k);
-  console.log('lleve del simetrico cifrada',kc);
-
-  var llaveprivada = localStorage.getItem('llaveprivada');
-  keyrsa.setPrivateKey(llaveprivada);
-  var cade_c =CryptoJS.SHA1(TC).toString(CryptoJS.enc.Base64);
-  console.log('cc',cade_c);
-  var array3 = {
-    llave_privada : llaveprivada,
-    hash : cade_c
-  }
-  fetch("/links/encriptar", {method: 'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(array3)}).then(response => response.json()).then(data =>{
-    console.log('hash',data);
-  console.log("n_cccccc",data);
-  var ccc_simetrico = CryptoJS.AES.encrypt(data, k).toString();
-
-  var objeto = {
-    kc: kc,
-    TC : TC,
-    TCC : ccc_simetrico,
-    id:id_remitente
-  }
-  socket.emit('fileMessage', objeto); 
-  
-  });
-  
-});
 
 
-
-
-         
- }
 async function ObtenerSala() {
   var room = document.getElementById('room').value;
   console.log('sala: ',room);
@@ -165,7 +101,7 @@ document.getElementById('player').addEventListener("click", addPoints);
   var espera = setInterval(function() {
     document.getElementById("msg").innerHTML = seconds2--;
     if (seconds2 == 0) {
-        document.getElementById("msg").innerHTML = "comienza";
+        document.getElementById("msg").innerHTML = "<center><h2><b>comienza</b></h2></center>";
         start();
     }
   }, 1000);   
