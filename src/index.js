@@ -141,7 +141,7 @@ io.on('connection', (socket) => {
           contador3++;
           console.log('contador3',contador3);
           if(contador3 == 2){
-            io.to(room).emit('partida');
+            io.emit('partida');
             console.log('partida1');
           }
         }
@@ -157,7 +157,7 @@ io.on('connection', (socket) => {
           contador4++;
           console.log('contador4',contador4);
           if(contador4 == 2){
-            io.to(room).emit('partida');
+            io.emit('partida');
             console.log('partida1');
           }
         }
@@ -173,7 +173,7 @@ io.on('connection', (socket) => {
           contador5++;
           console.log('contador5',contador5);
           if(contador5 == 2){
-            io.to(room).emit('partida');
+            io.emit('partida');
             console.log('partida1');
           }
         }
