@@ -99,8 +99,8 @@ function start() {
 document.getElementById('player').addEventListener("click", addPoints);
   var seconds2 = 3;
   var espera = setInterval(function() {
-    document.getElementById("msg").innerHTML = seconds2--;
-    if (seconds2 == 0) {
+    document.getElementById("ms").innerHTML = seconds2--;
+    if (seconds2 == -1) {
         document.getElementById("msg").innerHTML = "<center><h2><b>comienza</b></h2></center>";
         start();
     }
