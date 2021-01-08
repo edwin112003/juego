@@ -54,7 +54,7 @@ socket.on('partida',() => {
     console.log("aber");
     console.log(points);
     document.getElementById("puntos").innerHTML = points;
-    document.getElementById("puntos2").innerHTML = points;
+    
     rand = Math.round(Math.random()*450);
     rand2 = Math.round(Math.random()*450);
     document.getElementById("player").style.opacity = 0;
