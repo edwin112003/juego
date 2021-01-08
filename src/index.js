@@ -108,7 +108,7 @@ io.on('connection', (socket) => {
           contador1++;
           console.log('contador1',contador1);
           if(contador1 == 2){
-            io.emit('partida');
+            io.to(room).emit('partida');
             console.log('partida1');
           }
         }
@@ -124,6 +124,10 @@ io.on('connection', (socket) => {
         if(contador2<2){
           contador2++;
           console.log('contador2',contador2);
+          if(contador2 == 2){
+            io.to(room).emit('partida');
+            console.log('partida1');
+          }
         }
       }
       if(room == 3){
@@ -136,6 +140,10 @@ io.on('connection', (socket) => {
         if(contador3<2){
           contador3++;
           console.log('contador3',contador3);
+          if(contador3 == 2){
+            io.to(room).emit('partida');
+            console.log('partida1');
+          }
         }
       }
       if(room == 4){
@@ -148,6 +156,10 @@ io.on('connection', (socket) => {
         if(contador4<2){
           contador4++;
           console.log('contador4',contador4);
+          if(contador4 == 2){
+            io.to(room).emit('partida');
+            console.log('partida1');
+          }
         }
       }
       if(room == 5){
@@ -160,6 +172,10 @@ io.on('connection', (socket) => {
         if(contador5<2){
           contador5++;
           console.log('contador5',contador5);
+          if(contador5 == 2){
+            io.to(room).emit('partida');
+            console.log('partida1');
+          }
         }
       }
       const user = userJoin(socket.id, username, room);
